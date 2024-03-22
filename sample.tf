@@ -17,7 +17,7 @@ resource "aws_instance" "frontend" {
 }
 
 output "frontend" {
-  value = aws_instance.frontend.private_ip
+  value = aws_instance.frontend.public_ip
 }
 
 resource "aws_instance" "catalogue" {
