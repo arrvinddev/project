@@ -5,6 +5,10 @@ data "aws_ami" "centos" {
   
 }
 
+output "ami_id" {
+  value = data.aws_ami.centos.image_id
+}
+
 resource "aws_instance" "cart" {
   ami           = "ami-0f3c7d07486cad139"
   instance_type = "t3.micro"
