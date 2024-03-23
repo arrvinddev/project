@@ -5,10 +5,14 @@ data "aws_ami" "centos" {
   
 }
 
+variable "instance_type"{
+  default = "t3.micro"
+}
+
 
 resource "aws_instance" "cart" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
 
   tags = {
     Name = "cart"
