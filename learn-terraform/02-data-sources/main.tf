@@ -12,5 +12,5 @@ data "aws_security_groups" "test" {
 }
 
 output "all_sg" {
-  value = data.aws_security_group.test
+  value = data.aws_security_groups.test
 }
