@@ -54,13 +54,13 @@ variable "fruits" {
 
 #for each list 
 variable "vegetables" {
-        default = toset["carrot","capsicum"]
+        default = ["carrot","capsicum"]
 }
 
 
 resource "null_resource" "vegetables" {
 
-    for_each = var.vegetables
+    for_each = toset(var.vegetables)
 
     provisioner "local-exec" {
       command = "echo Vegetable Name - ${each.key}"
