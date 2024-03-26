@@ -54,7 +54,7 @@ variable "fruits" {
 
 #for each list 
 variable "vegetables" {
-        default = ["carrot","capsicum"]
+        default = toset["carrot","capsicum"]
 }
 
 
