@@ -46,7 +46,7 @@ user = {
     instance_type = "t3.small"
    }
    mysql = {
-    name = "msyql"
+    name = "mysql"
     instance_type = "t3.small"
    }
    
