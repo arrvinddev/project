@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 resource "aws_instance" "instance" {
   ami                    = data.aws_ami.centos.image_id
   for_each               = var.components
