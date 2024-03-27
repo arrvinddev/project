@@ -7,6 +7,29 @@ resource "aws_instance" "instance" {
     Name = each.value["name"]
   }
 
+   
+
+  provisioner "remote-exec" {
+
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = "DevOps321"
+    host     = self.private_ip
+  }
+
+    inline = [
+      "rm -rf roboshop-shell",
+      "git clone https://github.com/raghudevopsb72/roboshop-shell",
+      "cd roboshop-shell",
+      "sudo bash ${each.value["name"]}.sh"
+    ]
+
+
+    
+  
+  }
+
 }
 
 
