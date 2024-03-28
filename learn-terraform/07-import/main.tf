@@ -1,5 +1,6 @@
 resource "aws_instance" "workstation" {
-  
+    ami = "unknown"
+    instance_type = "unknown"
 }
 
 output "private_ip" {
