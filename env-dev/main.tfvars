@@ -3,7 +3,7 @@ components = {
     name          = "frontend"
     instance_type = "t3.small"
   }
-  mongo = {
+  mongodb = {
     name          = "mongodb"
     instance_type = "t3.small"
   }
