@@ -6,9 +6,11 @@ resource "aws_instance" "instance" {
   tags = {
     Name = each.value["name"]
   }
+}
 
-   
-
+resource "null_resource" "provisioner" {
+  depends_on = [ aws_instance.instance,aws_route53_record.records ]
+  for_each = var.components
   provisioner "remote-exec" {
 
   connection {
@@ -20,7 +22,7 @@ resource "aws_instance" "instance" {
 
     inline = [
       "rm -rf roboshop-shell",
-      "git clone https://github.com/raghudevopsb72/roboshop-shell",
+      "git clone https://github.com/arrvinddev/project-shell.git",
       "cd roboshop-shell",
       "sudo bash ${each.value["name"]}.sh"
     ]
@@ -30,7 +32,10 @@ resource "aws_instance" "instance" {
   
   }
 
+
 }
+  
+
 
 
 
