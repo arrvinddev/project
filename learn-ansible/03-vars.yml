@@ -19,7 +19,7 @@
       ansible.builtin.debug:
         msg: URL - {{ URL }}
       vars: 
-        URL: play.example.com
+        URL: tasks.example.com
 
 # Only that task have that variable, other tasks cannot access it
 
