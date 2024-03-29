@@ -7,6 +7,15 @@
       ansible.builtin.debug:
         msg: URL - {{ URL }}
 
+- name: Load Vars from a file
+  hosts: all
+  vars_files:
+      - exvars.yml
+  tasks: 
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL - {{ URL }}
+
 # In Ansible variable will be accessed using {{ }} ,
 # Ansible Supports double quotes and single quotes also , However quotes are not not mandatory in all cases
 # quotes are mandatory if value starts with a variable , meaning
