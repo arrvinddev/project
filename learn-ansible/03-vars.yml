@@ -7,6 +7,13 @@
       ansible.builtin.debug:
         msg: URL - {{ URL }}
 
+
+
+# In Ansible variable will be accessed using {{ }} ,
+# Ansible Supports double quotes and single quotes also , However quotes are not not mandatory in all cases
+# quotes are mandatory if value starts with a variable , meaning
+# msg: {{ URL }} <- This does not require quoting 
+
 - name: Load Vars from a file
   hosts: all
   vars_files:
@@ -16,10 +23,7 @@
       ansible.builtin.debug:
         msg: URL - {{ URL }}
 
-# In Ansible variable will be accessed using {{ }} ,
-# Ansible Supports double quotes and single quotes also , However quotes are not not mandatory in all cases
-# quotes are mandatory if value starts with a variable , meaning
-# msg: {{ URL }} <- This does not require quoting 
+#vars_files does not support task level, it is for play level only
 
 - name: Demo on Task Level Variables
   hosts: all
@@ -32,3 +36,8 @@
 
 # Only that task have that variable, other tasks cannot access it
 
+
+- name: Variable from Roles 
+  hosts: all 
+  roles: 
+    - sample
