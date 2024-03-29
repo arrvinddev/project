@@ -43,3 +43,34 @@
     URL_PLAY: play.example.com
   roles: 
     - sample
+
+- name: Demo on register Variables
+  hosts: all
+  tasks: 
+    - name: Run uptime shell command
+      ansible.builtin.shell: uptime
+      register: output
+    - name: Print output
+      ansible.builtin.debug:
+        msg: '{{ output }}'   
+
+        
+
+#variable precedence Order high to low 
+#Command line Variables
+#Task level Variables
+#Variables from files 
+#Play level Variables
+#Inventory Variables
+
+# Variable precedence while roles are used 
+# order high to low 
+
+#Command line Variables
+#Task Level Variable
+#vars dire from roles 
+#Variable from files 
+#Play level Variable
+#Inventory Variables
+#defaults dir from roles 
+
