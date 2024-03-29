@@ -21,4 +21,5 @@
       vars: 
         URL: play.example.com
 
+# Only that task have that variable, other tasks cannot access it
 
