@@ -5,6 +5,6 @@ parameters = [
     { name= "dev.frontend.payment_url", value= "http://payment-dev.robog.store:8080/"},
     { name= "dev.frontend.shipping_url", value= "http://shipping-dev.robog.store:8080/"},
    
-    {name="dev.catalogue.mongo_endpoint", value="mongo-dev.robog.store"}
+    {name="dev.catalogue.mongo_endpoint", value="mongodb-dev.robog.store"}
 
 ]
