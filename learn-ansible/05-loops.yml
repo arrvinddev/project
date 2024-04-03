@@ -10,7 +10,7 @@
          - banana
     - name: Demo task for Loops
       ansible.builtin.debug:
-        msg: Fruit Name - {{ item.name }},  Quantity - {{ item.quantity }}
+        msg: Fruit Name - {{ item.name }}, Quantity - {{ item.quantity }}
       loop:
-         - {name:apple , quantity:10}
-         - {name:banana , quantity:20}
+         - {name:apple, quantity:10}
+         - {name:banana, quantity:20}
