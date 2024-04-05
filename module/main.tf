@@ -69,7 +69,7 @@ resource "aws_iam_role" "role" {
 
 
 resource "aws_iam_role_policy" "ssm-ps-policy" {
-  name = "{var.component_name}-${var.env}-ssm-ps-policy"
+  name = "${var.component_name}-${var.env}-ssm-ps-policy"
   role = aws_iam_role.role.id
 
   policy  = jsonencode({
