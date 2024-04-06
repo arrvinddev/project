@@ -12,6 +12,7 @@ parameters = [
     {name="dev.user.mongo", value="MONGO=true"},
     {name="dev.user.redis_host", value="redis-dev.robog.store"},
     {name="dev.user.mongo_url", value="mongodb://mongodb-dev.robog.store:27017/users"},
+    {name="dev.user.mongo_endpoint", value="mongodb-dev.robog.store"},
 
     {name="dev.cart.catalogue_port", value="8080"},
     {name="dev.cart.redis_host", value="redis-dev.robog.store"},
