@@ -35,7 +35,7 @@ app = {
     instance_type = "t3.small"
     subnet_name = "web"
   }
-   frontend = {
+   catalogue = {
     name = "catalogue"
     instance_type = "t3.small"
     subnet_name = "app"
