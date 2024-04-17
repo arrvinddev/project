@@ -7,7 +7,7 @@ resource "aws_security_group" "sg" {
 
   description = "APP"
   from_port         = 8080
-  protocol       = tcp
+  protocol       = "tcp"
   to_port           = 8080
   cidr_blocks = var.allow_app_cidr
 
@@ -17,7 +17,7 @@ resource "aws_security_group" "sg" {
 
   description = "SSH"
   from_port         = 22
-  protocol       = tcp
+  protocol       = "tcp"
   to_port           = 22
   cidr_blocks = var.bastion_cidr
 
