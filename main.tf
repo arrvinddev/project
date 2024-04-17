@@ -30,7 +30,7 @@ module "vpc"{
 module "docdb"{
 source = "git::https://github.com/arrvinddev/tf-module-docdb.git"
 for_each = var.docdb
-
+engine_version = each.value["engine_version"]
 tags = local.tags
 subnets = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null)
 env = var.env
