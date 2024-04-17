@@ -5,7 +5,7 @@ subnet_ids = var.subnets
 tags = merge(var.tags, {Name= "${var.name}-${var.env}-sng"})
 }
 
-resource "aws_security_group" "sg" {
+resource "aws_security_group" "main" {
   name        = "${var.name}-${var.env}-sg"
   description = "${var.name}-${var.env}-sg"
   vpc_id      = var.vpc_id
