@@ -1,4 +1,4 @@
-resource "aws_doc_db_subnet_group" "main"{
+resource "aws_docdb_subnet_group" "main"{
 name = "docdb-${var.env}"
 subnet_ids = var.subnets 
 
