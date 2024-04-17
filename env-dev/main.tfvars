@@ -3,6 +3,7 @@ bastion_cidr = ["172.31.86.68/32"]
 default_vpc_id= "vpc-0e91f72112691c58c"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtid = "rtb-09c0b52de0b3a5bcf"
+kms_arn = arn:aws:kms:us-east-1:119876270834:key/ca96756f-0bb2-4402-b6ae-7383aa4f1c79
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -55,6 +56,8 @@ app = {
     
   }
 
+ 
+
   #   cart = {
   #   name = "cart"
   #   instance_type = "t3.small"
@@ -79,4 +82,19 @@ app = {
   #   subnet_name = "app"
   # }
 
+
+  
+
+
+
+
 }
+
+ docdb = {
+    main = {
+        subnet_name = "db"
+        allow_db_cidr = "app"
+        engine_version = "4.0.0"
+    }
+  }
+
