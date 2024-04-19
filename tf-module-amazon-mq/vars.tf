@@ -2,20 +2,20 @@
 variable "tags" {}
 variable "env" {}
 variable "subnets"{}
+variable "bastion_cidr" {
+  
+}
 variable "name"{
-    default = "rds"
+    default = "rabbitmq"
 }
 
 variable "vpc_id"{}
 variable "allow_db_cidr" {}
 variable "kms_arn" {}
 variable "port_no" {
-    default = 3306
+    default = 5672
 }
 
-variable "instance_count" {}
-variable "instance_class" {}
-variable "engine_version" {}
-
+variable "instance_type"{}
 
 

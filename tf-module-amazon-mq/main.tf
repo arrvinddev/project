@@ -6,11 +6,21 @@ resource "aws_security_group" "main" {
 
   ingress {
 
-  description = "RDS"
+  description = "RABBITMQ"
   from_port         = var.port_no
   protocol       = "tcp"
   to_port           = var.port_no
   cidr_blocks = var.allow_db_cidr
+
+  }
+
+  ingress {
+
+  description = "SSH"
+  from_port         = 22
+  protocol       = "tcp"
+  to_port           = 22
+  cidr_blocks = var.bastion_cidr
 
   }
 
@@ -31,48 +41,22 @@ resource "aws_security_group" "main" {
   tags = merge(var.tags, {Name= "${var.name}-${var.env}-sg"})
 }
 
-resource "aws_db_subnet_group" "main" {
-  name       = "${var.name}-${var.env}-sng"
-  subnet_ids = var.subnets
-
-  tags = merge(var.tags, {Name= "${var.name}-${var.env}-sng"})
-}
 
 
-resource "aws_db_parameter_group" "main" {
-  name   = "${var.name}-${var.env}-pg"
-  family = "mysql5.7"
-}
 
 
-resource "aws_rds_cluster" "main" {
-  cluster_identifier      = "${var.name}-${var.env}-rds"
-  engine                  = "aurora-mysql"
-  engine_version          = var.engine_version
-  database_name           = "dummy"
-  master_username         = data.aws_ssm_parameter.db_user.value
-  master_password         = data.aws_ssm_parameter.db_pass.value
-  backup_retention_period = 5
-  preferred_backup_window = "07:00-09:00"
+resource "aws_instance" "rabbitmq" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = var.instance_type
+  subnet_id = var.subnets[0]
   vpc_security_group_ids = [aws_security_group.main.id]
-  db_subnet_group_name = aws_db_subnet_group.main.name
-  skip_final_snapshot = true
-  storage_encrypted = true
-  kms_key_id = var.kms_arn
-  tags = merge(var.tags, {Name= "${var.name}-${var.env}-rds"})
+  root_block_device {
+    encrypted = true
+    kms_key_id = var.kms_arn
+  }
+  tags = merge(var.tags, {Name= "${var.name}-${var.env}"})
+
+  user_data = base64encode(templatefile("${path.module}/userdata.sh", {
+    rabbitmq_appuser_password = data.aws_ssm_parameter.rabbitmq_appuser_password.value
+  }))
 }
-
-resource "aws_rds_cluster_instance" "cluster_instances" {
-  count = var.instance_count
-  identifier = "aurora-cluster-demo-${count.index}"
-  cluster_identifier = aws_rds_cluster.main.id
-  instance_class     = var.instance_class
-  engine             = aws_rds_cluster.main.engine
-  engine_version     = aws_rds_cluster.main.engine_version
-  tags = merge(var.tags, {Name= "${var.name}-${var.env}-rds-${count.index+1}"})
-}
-
-
-
-
-
