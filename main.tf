@@ -64,6 +64,7 @@ module "elasticache"{
     replicas_per_node_group = each.value["replicas_per_node_group"]
     num_node_groups =  each.value["num_node_groups"]
     node_type =  each.value["node_type"]
+    num_cache_nodes = each.value["num_cache_nodes"]
     subnets = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null)
     allow_db_cidr= lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
 
