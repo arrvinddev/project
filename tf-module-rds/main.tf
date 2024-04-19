@@ -31,11 +31,11 @@ resource "aws_security_group" "main" {
   tags = merge(var.tags, {Name= "${var.name}-${var.env}-sg"})
 }
 
-resource "aws_db_subnet_group" "default" {
-  name       = "${var.name}-${var.env}-sg"
-  subnet_ids = [aws_subnet.frontend.id, aws_subnet.backend.id]
+resource "aws_db_subnet_group" "main" {
+  name       = "${var.name}-${var.env}-sng"
+  subnet_ids = var.subnets
 
-  tags = merge(var.tags, {Name= "${var.name}-${var.env}-sg"})
+  tags = merge(var.tags, {Name= "${var.name}-${var.env}-sng"})
 }
 
 
