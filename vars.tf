@@ -21,3 +21,4 @@ variable "elasticache" {
 variable "rabbitmq" {
   
 }
+variable "alb"{}
