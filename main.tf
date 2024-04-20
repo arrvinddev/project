@@ -81,7 +81,6 @@ module "alb"{
     allow_alb_cidr= each.value["name"]=="public" ? ["0.0.0.0/0"] : lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_alb_cidr"],null),"subnet_cidrs",null)
     name = each.value["name"]
     internal = each.value["internal"]
-
     tags = local.tags
     env = var.env
     vpc_id = local.vpc_id
