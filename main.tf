@@ -109,6 +109,7 @@ lb_dns_name = lookup(lookup(module.alb,each.value["lb_type"],null),"dns_name",nu
 domain_id = var.domain_id
 subnet_ids = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null)
 env = var.env
+kms_arn = var.kms_arn
 vpc_id = lookup(lookup(module.vpc,"main",null),"vpc_id",null)
 allow_app_cidr= lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_app_cidr"],null),"subnet_cidrs",null)
 }
