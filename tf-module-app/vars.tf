@@ -8,9 +8,19 @@ variable "bastion_cidr"{}
 variable "desired_capacity" {}
 variable "max_size" {}
 variable "min_size" {}
-variable "tags" {
+variable "tags" {}
+variable "app_port" {}
+
+variable "listener_arn" {}
+variable listener_priority{}
+variable "domain_name" {}
+variable "lb_dns_name" {}
+variable "domain_id" {
   
 }
-variable "app_port" {
+variable dns_name{
+
+}
+variable "kms_arn" {
   
 }

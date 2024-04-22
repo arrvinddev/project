@@ -4,6 +4,8 @@ default_vpc_id= "vpc-0e91f72112691c58c"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtid = "rtb-09c0b52de0b3a5bcf"
 kms_arn = "arn:aws:kms:us-east-1:119876270834:key/ca96756f-0bb2-4402-b6ae-7383aa4f1c79"
+domain_name = "robog.store"
+domain_id = "Z013308937D6QZ0QWCBJ3"
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -44,6 +46,9 @@ app = {
   max_size           = 10
   min_size           = 1
   app_port = 80
+  listener_priority = 1 
+  lb_type = "public"
+  dns_name = "dev"
   
   }
    catalogue = {
@@ -55,6 +60,8 @@ app = {
   max_size           = 10
   min_size           = 1
   app_port= 8080
+  listener_priority = 1
+  lb_type = "private"
   
   }
 
