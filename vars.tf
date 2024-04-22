@@ -10,9 +10,9 @@ variable "domain_name" {}
 variable "docdb" {
   
 }
-variable "kms_arn" {
+# variable "kms_arn" {
   
-}
+# }
 variable "rds" {
   
 }
