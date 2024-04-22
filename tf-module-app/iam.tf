@@ -31,7 +31,7 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
     role = aws_iam_role.role.id 
 
   policy = jsonencode({
-    "version" : "2012-10-17",
+    "Version" : "2012-10-17",
     "Statement" : [
         {
             "Sid" : "VisualEditor0",
