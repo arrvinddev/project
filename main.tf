@@ -100,6 +100,7 @@ max_size = each.value["max_size"]
 min_size = each.value["min_size"]
 app_port = each.value["app_port"]
 dns_name = each.value["name"]=="frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
+parameters = each.value["parameters"]
 bastion_cidr = var.bastion_cidr
 tags = local.tags
 domain_name = var.domain_name
