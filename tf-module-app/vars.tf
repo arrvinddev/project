@@ -27,3 +27,6 @@ variable "kms_arn" {
 variable "parameters" {
   
 }
+variable "monitor_cidr" {
+  
+}
