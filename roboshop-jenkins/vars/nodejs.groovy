@@ -20,26 +20,26 @@ stages {
         steps {
             // sh 'ls -l'
             // sh 'sonar-scanner -Dsonar.projectKey=${component} -Dsonar.host.url=http://172.31.29.145:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.qualitygate.wait=true'
-            sh "echo Code Quality"
+            sh 'echo Code Quality'
         }
     }
 
     stage ('Unit Test Cases'){
         steps {
-            sh "echo unit testing"
+            sh 'echo unit testing'
             // sh "npm test"
         }
     }
 
     stage ('CheckMarx SAST Scan'){
         steps {
-            sh "echo CheckMarx Scan"
+            sh 'echo CheckMarx Scan'
         }
     }
 
     stage ('CheckMarx SCA Scan'){
         steps {
-            sh "echo CheckMarx SCA Scan"
+            sh 'echo CheckMarx SCA Scan'
         }
     }
 
