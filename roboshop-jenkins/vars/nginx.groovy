@@ -10,13 +10,12 @@ pipeline {
   options { 
     ansiColor('xterm')
   }
-
-
-
+ environment {
+  NEXUS = credentials('NEXUS')
+ }
 
 stages {
-
-
+    
     stage ('Code Quality'){
         steps {
             // sh 'ls -l'
@@ -27,8 +26,8 @@ stages {
 
     stage ('Unit Test Cases'){
         steps {
-            sh 'echo Unit tests'
-            // sh "python3.6 -m unittest"
+            sh 'echo unit testing'
+            // sh "npm test"
         }
     }
 
@@ -46,12 +45,14 @@ stages {
 
     stage ('Release Application'){
         steps {
+            sh 'npm install'
             sh 'echo $TAG_NAME >VERSION'
-            sh 'zip -r ${component}-${TAG_NAME}.zip *.ini *.py *.txt VERSION'
+            sh 'zip -r ${component}-${TAG_NAME}.zip *'
+            //Deleting this file as it is not needed.
+            sh 'zip -d ${component}-${TAG_NAME}.zip Jenkinsfile'
             sh 'curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${component}-${TAG_NAME}.zip http://172.31.30.201:8081/repository/${component}/${component}-${TAG_NAME}.zip'
         }
     }
-
 
 }
 
