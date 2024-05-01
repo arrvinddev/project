@@ -26,7 +26,7 @@ stages {
 
     stage ('Unit Test Cases'){
         steps {
-            sh "unit testing"
+            sh "echo unit testing"
             // sh "npm test"
         }
     }
