@@ -13,7 +13,8 @@ pipeline {
 
 
 parameters { 
-choice(name: 'env', choices: ['dev', 'prod'], description: 'choose environment')
+choice(name: 'env', choices: ['dev', 'prod'], description: 'Pick environment')
+// choice(name: 'action' choices: ['apply', 'destroy'], description: 'Pick action')
  }
 
 stages {
@@ -23,12 +24,38 @@ stages {
             sh 'terraform init -backend-config=env-${env}/state.tfvars'
         }
     }
-    stage('Terraform Apply') {
+    stage('Terraform Apply') { 
         steps {
-            sh 'terraform apply -auto-approve -var-file=env-${env}/main.tfvars'
+            //  sh 'terraform plan -var-file=env-${env}/main.tfvars'
+            sh 'terraform destroy -auto-approve -var-file=env-${env}/main.tfvars'
+            // sh 'terraform ${action} -auto-approve -var-file=env-${env}/main.tfvars'
         }
     }
+
+    
 }
+
+// parameters { 
+// choice(name: 'env', choices: ['dev', 'prod'], description: 'choose environment to destroy')
+//  }
+
+//  stages {
+
+//     stage('Terraform INIT') {
+//         steps {
+//             sh 'terraform init -backend-config=env-${env}/state.tfvars'
+//         }
+//     }
+//     stage('Terraform destroy') {
+//         steps {
+//             sh 'terraform destroy -auto-approve -var-file=env-${env}/main.tfvars'
+//         }
+//     }
+
+    
+// }
+
+
 
 post { 
      always {
