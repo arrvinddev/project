@@ -117,7 +117,6 @@ allow_app_cidr= lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",nu
 monitor_cidr = var.monitor_cidr
 }
 
-
 ####Load Runner
 data "aws_ami" "ami" {
     most_recent = true
@@ -144,13 +143,11 @@ resource "null_resource" "load" {
         }
 
         inline = [
-            "curl -s https://raw.githubusercontent.com/linuxautomation/master/tools/docker/install.sh | bash",
+            "curl -s https://raw.githubusercontent.com/linuxautomations/labautomation/master/tools/docker/install.sh | bash",
             "docker pull robotshop/rs-load"
         ]
     }
 }
-
-
 
 
 
