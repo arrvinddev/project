@@ -1,1 +1,3 @@
 appName: frontend
+service:
+  type: LoadBalancer
