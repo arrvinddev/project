@@ -1,1 +1,14 @@
 appName: catalogue
+appPort: 8080
+params: "prod.catalogue.mongo_url prod.catalogue.documentdb"
+schema: 
+  enabled: true
+  type: mongo
+
+resources: 
+  limits:
+    cpu: 500m
+    memory: 712Mi
+  requests:
+    cpu: 300m
+    memory: 512Mi

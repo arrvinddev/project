@@ -1,0 +1,12 @@
+##Annotations
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx04
+  annotations:
+    xyz-com-ecommerce-roboshop/component: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+

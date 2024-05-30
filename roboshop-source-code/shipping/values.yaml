@@ -1,1 +1,14 @@
 appName: shipping
+params: "prod.shipping.cart_endpoint prod.rds.db_user prod.rds.db_pass prod.rds.db_host"
+appPort: 8080
+schema:
+  enabled: true
+  type: mysql
+
+resources: 
+  limits:
+    cpu: 2000m
+    memory: 4000Mi
+  requests:
+    cpu: 1500m
+    memory: 3512Mi

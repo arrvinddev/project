@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata: 
+  name: test1
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::119876270834:role/oidc-test
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata: 
+  name: test2
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: test1
+spec: 
+  serviceAccountName: test1
+  containers: 
+  - name: debug
+    image: rkalluru/loaded:centos8
+---
+apiVersion: v1
+kind: Pod
+metadata:
+   name: test2
+spec: 
+  serviceAccountName: test2
+  containers: 
+  - name: debug
+    image: rkalluru/loaded:centos8

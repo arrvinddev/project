@@ -1,1 +1,11 @@
 appName: payment
+params: "prod.payment.cart_host prod.payment.cart_port prod.payment.user_host prod.payment.user_port prod.payment.amqp_host prod.payment.amqp_user prod.payment.amqp_pass"
+appPort: 8080
+
+resources: 
+  limits:
+    cpu: 1500m
+    memory: 1712Mi
+  requests:
+    cpu: 1000m
+    memory: 1512Mi

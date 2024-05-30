@@ -1,1 +1,11 @@
 appName: cart
+params: "prod.cart.redis_host prod.cart.catalogue_host prod.cart.catalogue_port"
+appPort: 8080
+
+resources: 
+  limits:
+    cpu: 500m
+    memory: 712Mi
+  requests:
+    cpu: 300m
+    memory: 512Mi

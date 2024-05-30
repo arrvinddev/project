@@ -1,1 +1,14 @@
 appName: user
+params: "prod.user.documentdb prod.user.redis_host prod.user.mongo_url"
+appPort: 8080
+schema: 
+  enabled: true
+  type: mongo
+
+resources: 
+  limits:
+    cpu: 500m
+    memory: 712Mi
+  requests:
+    cpu: 300m
+    memory: 512Mi
